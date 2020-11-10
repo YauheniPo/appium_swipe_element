@@ -1,0 +1,3 @@
+robotframework
+robotframework-appiumlibrary==1.5.0.6
+robotframework-seleniumlibrary
