@@ -3,6 +3,9 @@ from appium.webdriver import WebElement
 from appium.webdriver.webdriver import WebDriver
 from robot.libraries.BuiltIn import BuiltIn
 
+from version import get_version
+
+__version__ = get_version()
 SCROLL_MEASURE_PERCENT = {'LONG': 90, 'MIDDLE': 50, 'SHORT': 20}
 
 
