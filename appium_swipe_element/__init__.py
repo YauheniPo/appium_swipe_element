@@ -1,8 +1,12 @@
+from AppiumLibrary import AppiumLibrary
 from appium.webdriver import WebElement
 from appium.webdriver.webdriver import WebDriver
 from robot.libraries.BuiltIn import BuiltIn
 
-SCROLL_MEASURE_PERCENT = {'LONG': 99, 'MIDDLE': 50, 'SHORT': 20}
+from version import get_version
+
+__version__ = get_version()
+SCROLL_MEASURE_PERCENT = {'LONG': 90, 'MIDDLE': 50, 'SHORT': 20}
 
 
 def get_swipe_params(way, measure_percent, params):
@@ -14,7 +18,7 @@ def get_swipe_params(way, measure_percent, params):
             swipe_prams['end_y'] = params.get('y') + params.get('height') / 100 * measure_percent
         if way == 'DOWN':
             swipe_prams['start_y'] = params.get('y') + params.get('height') / 100 * measure_percent
-            swipe_prams['end_y'] = params.get('y') + params.get('height') / 100 * 16
+            swipe_prams['end_y'] = params.get('y') + params.get('height') / 100 * 5
     if way == 'LEFT' or way == 'RIGHT':
         swipe_prams['start_y'] = swipe_prams['end_y'] = params.get('y') + params.get('height') / 2
         if way == 'LEFT':
@@ -26,17 +30,14 @@ def get_swipe_params(way, measure_percent, params):
     return swipe_prams
 
 
-class AppiumHelper:
+class AppiumHelper(AppiumLibrary):
     built_in = BuiltIn()
 
-    def _get_element(self, locator) -> WebElement:
-        return self.built_in.run_keyword("AppLib.Get Webelement", locator)
-
     def _browser(self) -> WebDriver:
-        return self.built_in.get_library_instance('AppLib')._current_application()
+        return self._current_application()
 
-    def _debug(self):
-        self.built_in.run_keyword('debug')
+    def _get_element(self, locator) -> WebElement:
+        return self._browser().find_element(locator)
 
     def get_page_source(self) -> str:
         return self._browser().page_source
