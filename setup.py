@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='appium_swipe_element',
-    version='0.0.1',
+    version='1.0.1',
     description='YauheniPo package for swiping by element',
     url='https://github.com/YauheniPo/Appium_Swipe_Element.git',
     author='Yauheni Papovich',
