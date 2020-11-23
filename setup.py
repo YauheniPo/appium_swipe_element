@@ -1,12 +1,14 @@
 import setuptools
 from setuptools import setup
 
+from version import VERSION
+
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name='appium_swipe_element',
-    version='1.0.1',
+    version=VERSION,
     description='YauheniPo package for swiping by element',
     url='https://github.com/YauheniPo/Appium_Swipe_Element.git',
     author='Yauheni Papovich',
